@@ -4,7 +4,9 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/wajahatalli/cicd-test.git'
+                git branch: 'main', 
+                    credentialsId: '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', 
+                    url: 'https://github.com/wajahatalli/cicd-test.git'
             }
         }
 
