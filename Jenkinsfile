@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    triggers {
+        cron('H/1 * * * *') // Runs every 1 minute
+    }
+
     stages {
         stage('Clone Repository') {
             steps {
