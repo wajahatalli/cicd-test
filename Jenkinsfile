@@ -28,7 +28,11 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'pm2 restart all || pm2 start index.js'
+                sh '''
+                    pm2 delete index || true  # Delete existing process if running
+                    pm2 start index.js --name "index" # Start a fresh process
+                    pm2 save  # Save PM2 process list
+                '''
             }
         }
     }
